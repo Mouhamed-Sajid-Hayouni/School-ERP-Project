@@ -1,0 +1,55 @@
+@startuml
+actor User
+participant "Mobile App / Web App" as Client
+participant "Express API" as API
+participant "authenticateToken" as Auth
+participant "Portal Controller" as Controller
+participant "Prisma Client" as Prisma
+database "PostgreSQL" as DB
+
+User -> Client : Open My Portal
+Client -> API : GET /api/my-portal\nAuthorization: Bearer <JWT>
+
+API -> Auth : verify token
+Auth --> API : userId, role
+
+API -> Controller : handleMyPortal(userId, role)
+
+Controller -> Prisma : find user profile
+Prisma -> DB : SELECT user + linked profile
+DB --> Prisma : user/profile
+Prisma --> Controller : user/profile
+
+alt role == STUDENT
+  Controller -> Prisma : fetch schedules by classId
+  Prisma -> DB : SELECT schedules
+  DB --> Prisma : schedules
+  Prisma --> Controller : schedules
+
+  Controller -> Prisma : fetch grades by studentId
+  Prisma -> DB : SELECT grades + subjects
+  DB --> Prisma : grades
+  Prisma --> Controller : grades
+
+  Controller -> Prisma : fetch absences by studentId
+  Prisma -> DB : SELECT attendance WHERE status != PRESENT
+  DB --> Prisma : absences
+  Prisma --> Controller : absences
+else role == PARENT
+  Controller -> Prisma : fetch children by parentId
+  Prisma -> DB : SELECT children
+  DB --> Prisma : children
+  Prisma --> Controller : children
+
+  loop for each child
+    Controller -> Prisma : fetch schedules, grades, absences
+    Prisma -> DB : SELECT related records
+    DB --> Prisma : child portal data
+    Prisma --> Controller : child portal data
+  end
+end
+
+Controller --> API : portal payload
+API --> Client : 200 JSON
+Client --> User : Render timetable, grades, absences
+@endumld

@@ -1,0 +1,59 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor Admin
+actor Teacher
+actor Student
+actor Parent
+
+rectangle "School ERP System" {
+  usecase "Login" as UC_Login
+  usecase "Register User" as UC_Register
+  usecase "Manage Users" as UC_Users
+  usecase "Manage Classes" as UC_Classes
+  usecase "Manage Subjects" as UC_Subjects
+  usecase "Manage Schedules" as UC_Schedules
+  usecase "Take Attendance" as UC_Attendance
+  usecase "Manage Grades" as UC_Grades
+  usecase "Generate Bulletin PDF" as UC_Bulletin
+  usecase "View My Portal" as UC_Portal
+  usecase "View Timetable" as UC_Timetable
+  usecase "View Grades" as UC_ViewGrades
+  usecase "View Absences" as UC_Absences
+}
+
+Admin --> UC_Login
+Admin --> UC_Register
+Admin --> UC_Users
+Admin --> UC_Classes
+Admin --> UC_Subjects
+Admin --> UC_Schedules
+Admin --> UC_Attendance
+Admin --> UC_Grades
+Admin --> UC_Bulletin
+
+Teacher --> UC_Login
+Teacher --> UC_Schedules
+Teacher --> UC_Attendance
+Teacher --> UC_Grades
+Teacher --> UC_Bulletin
+
+Student --> UC_Login
+Student --> UC_Portal
+Student --> UC_Timetable
+Student --> UC_ViewGrades
+Student --> UC_Absences
+
+Parent --> UC_Login
+Parent --> UC_Portal
+Parent --> UC_Timetable
+Parent --> UC_ViewGrades
+Parent --> UC_Absences
+
+UC_Portal ..> UC_Timetable : <<include>>
+UC_Portal ..> UC_ViewGrades : <<include>>
+UC_Portal ..> UC_Absences : <<include>>
+UC_Grades ..> UC_Bulletin : <<extend>>
+@enduml

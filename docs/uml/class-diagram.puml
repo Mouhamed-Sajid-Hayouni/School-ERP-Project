@@ -1,0 +1,97 @@
+@startuml
+skinparam classAttributeIconSize 0
+hide empty methods
+
+enum Role {
+  ADMIN
+  TEACHER
+  STUDENT
+  PARENT
+}
+
+class User {
+  +id: String
+  +email: String
+  +passwordHash: String
+  +firstName: String
+  +lastName: String
+  +role: Role
+  +createdAt: DateTime
+}
+
+class Student {
+  +id: String
+  +userId: String
+  +dateOfBirth: DateTime
+  +classId: String
+  +parentId: String
+}
+
+class Teacher {
+  +id: String
+  +userId: String
+  +specialty: String
+}
+
+class Parent {
+  +id: String
+  +userId: String
+}
+
+class Class {
+  +id: String
+  +name: String
+  +academicYear: String
+}
+
+class Subject {
+  +id: String
+  +name: String
+  +coefficient: Float
+}
+
+class Schedule {
+  +id: String
+  +classId: String
+  +subjectId: String
+  +teacherId: String
+  +dayOfWeek: String
+  +startTime: String
+  +endTime: String
+}
+
+class Attendance {
+  +id: String
+  +studentId: String
+  +scheduleId: String
+  +date: DateTime
+  +status: String
+}
+
+class Grade {
+  +id: String
+  +studentId: String
+  +subjectId: String
+  +examType: String
+  +score: Float
+  +comments: String
+  +createdAt: DateTime
+}
+
+User "1" --> "0..1" Student : studentProfile
+User "1" --> "0..1" Teacher : teacherProfile
+User "1" --> "0..1" Parent : parentProfile
+
+Parent "1" --> "0..*" Student : children
+Class "1" --> "0..*" Student : students
+
+Class "1" --> "0..*" Schedule : schedules
+Subject "1" --> "0..*" Schedule : schedules
+Teacher "1" --> "0..*" Schedule : schedules
+
+Student "1" --> "0..*" Attendance : attendances
+Schedule "1" --> "0..*" Attendance : attendances
+
+Student "1" --> "0..*" Grade : grades
+Subject "1" --> "0..*" Grade : grades
+@enduml

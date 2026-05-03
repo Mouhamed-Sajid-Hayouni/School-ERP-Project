@@ -1,0 +1,34 @@
+@startuml
+actor User
+participant "Web / Mobile Client" as Client
+participant "Express API" as API
+participant "Auth Controller" as Controller
+participant "Prisma Client" as Prisma
+database "PostgreSQL" as DB
+participant "bcryptjs" as Bcrypt
+participant "jsonwebtoken" as JWT
+
+User -> Client : Enter email/password
+Client -> API : POST /api/login
+
+API -> Controller : login(email, password)
+Controller -> Prisma : findUnique({ email })
+Prisma -> DB : SELECT user
+DB --> Prisma : user record
+Prisma --> Controller : user record
+
+Controller -> Bcrypt : compare(password, passwordHash)
+Bcrypt --> Controller : true/false
+
+alt valid credentials
+  Controller -> JWT : sign({ userId, role })
+  JWT --> Controller : token
+  Controller --> API : token + user
+  API --> Client : 200 OK
+  Client --> User : store token and enter dashboard
+else invalid credentials
+  Controller --> API : 401 Unauthorized
+  API --> Client : error message
+  Client --> User : show login error
+end
+@enduml
