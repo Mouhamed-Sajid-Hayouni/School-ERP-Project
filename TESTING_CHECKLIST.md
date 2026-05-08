@@ -7,7 +7,9 @@
 - [x] Student login works
 - [x] Parent login works
 - [x] Logout works
+- [x] Invalid login is rejected
 - [x] Invalid token is rejected
+- [x] Protected pages redirect unauthenticated users to login
 
 ---
 
@@ -26,8 +28,8 @@
 - [x] Announcements visible
 - [x] Messages visible
 - [x] Reports visible
-- [x] Settings visible
 - [x] Audit Logs visible
+- [x] Settings visible
 
 ### Teacher
 
@@ -39,33 +41,155 @@
 - [x] Announcements visible
 - [x] Messages visible
 - [x] Admin-only tabs hidden
+- [x] Audit Logs hidden
+- [x] Settings hidden
 
 ### Student / Parent
 
 - [x] My Portal visible
 - [x] Messages visible
-- [x] Admin/teacher tabs hidden
+- [x] Admin tabs hidden
+- [x] Teacher tabs hidden
+- [x] Audit Logs hidden
+- [x] Settings hidden
 
 ---
 
-## 3. Notifications
+## 3. Users Management
+
+- [x] Admin can load users list
+- [x] Admin can create a user
+- [x] Admin can update a user
+- [x] Admin can delete a user
+- [x] Duplicate email is rejected
+- [x] Required fields are validated
+- [x] User role is saved correctly
+- [x] User actions are saved in Audit Logs
+
+---
+
+## 4. Classes Management
+
+- [x] Admin can load classes
+- [x] Admin can create a class
+- [x] Admin can delete a class
+- [x] Class name is required
+- [x] Academic year is required
+- [x] Duplicate class validation works
+- [x] Class actions are saved in Audit Logs
+
+---
+
+## 5. Subjects Management
+
+- [x] Admin can load subjects
+- [x] Admin can create a subject
+- [x] Admin can delete a subject
+- [x] Subject name is required
+- [x] Coefficient is required
+- [x] Invalid coefficient is rejected
+- [x] Duplicate subject validation works
+- [x] Subject actions are saved in Audit Logs
+
+---
+
+## 6. Schedules
+
+- [x] Admin can load schedules
+- [x] Admin can create a schedule
+- [x] Admin can update a schedule
+- [x] Admin can delete a schedule
+- [x] Schedule requires class, subject, teacher, day, start time, and end time
+- [x] Invalid time range is rejected
+- [x] Class schedule conflicts are rejected
+- [x] Teacher schedule conflicts are rejected
+- [x] Schedule actions are saved in Audit Logs
+
+---
+
+## 7. Attendance
+
+- [x] Attendance page loads correctly
+- [x] Admin can save attendance
+- [x] Teacher can save attendance for assigned schedules
+- [x] Teacher cannot save attendance outside assigned scope
+- [x] Student status can be set to Present
+- [x] Student status can be set to Absent
+- [x] Student status can be set to Late
+- [x] Attendance records can be updated
+- [x] Attendance actions are saved in Audit Logs
+
+---
+
+## 8. Grades
+
+- [x] Grades page loads correctly
+- [x] Admin can save grades
+- [x] Teacher can save grades for assigned class and subject
+- [x] Teacher cannot save grades outside assigned scope
+- [x] Class selection works
+- [x] Subject selection works
+- [x] Period selection works
+- [x] Exam type selection works
+- [x] Score must be between 0 and 20
+- [x] Grade comments can be saved
+- [x] Grade creation creates notification
+- [x] Grade update works
+- [x] Grade actions are saved in Audit Logs
+
+---
+
+## 9. Assignments
+
+- [x] Assignments page loads correctly
+- [x] Admin can create assignment
+- [x] Teacher can create assignment for assigned class and subject
+- [x] Teacher cannot create assignment outside assigned scope
+- [x] Assignment requires class, subject, teacher, title, description, and due date
+- [x] Assignment submissions are created for students
+- [x] Assignment creates notifications
+- [x] Assignment can be updated
+- [x] Assignment can be deleted
+- [x] Assignment actions are saved in Audit Logs
+
+---
+
+## 10. Announcements
+
+- [x] Announcements page loads correctly
+- [x] Admin can create announcement
+- [x] Teacher can create allowed announcement
+- [x] Announcement can target all users
+- [x] Announcement can target students
+- [x] Announcement can target parents
+- [x] Announcement can target teachers
+- [x] Announcement can target a specific class
+- [x] Announcement creates notifications
+- [x] Announcement can be updated
+- [x] Announcement can be deleted
+- [x] Deleted announcement details are preserved in Audit Logs
+- [x] Announcement actions are saved in Audit Logs
+
+---
+
+## 11. Notifications
 
 - [x] Notifications bell loads
 - [x] Unread badge appears
 - [x] Mark as read works
-- [x] Badge decreases/disappears after read
+- [x] Badge decreases or disappears after read
 - [x] Assignment creates notification
 - [x] Announcement creates notification
 - [x] Grade creates notification
 - [x] Bulletin creates notification
 - [x] Message creates notification
-- [x] MESSAGE notification opens Messages page
-- [x] MESSAGE notification opens the exact conversation
-- [x] MESSAGE notification becomes read after opening
+- [x] Message notification opens Messages page
+- [x] Message notification opens the exact conversation
+- [x] Message notification becomes read after opening
 
 ---
 
-## 4. Messages
+## 12. Messages
 
 ### Basic Flow
 
@@ -95,229 +219,192 @@ Result: PASS.
 
 ---
 
-## 5. Users
-
-- [x] Admin can create user
-- [x] Admin can edit user
-- [x] Admin can delete user
-- [x] Email validation works
-- [x] Duplicate email is rejected
-- [x] Parent can be linked to student
-- [x] User actions appear in Audit Logs
-
----
-
-## 6. Classes
-
-- [x] Admin can create class
-- [x] Admin can delete class
-- [x] Duplicate class/year is rejected
-- [x] Class appears in schedules, users, grades, and reports
-- [x] Class actions appear in Audit Logs
-
----
-
-## 7. Subjects
-
-- [x] Admin can create subject
-- [x] Admin can delete subject
-- [x] Coefficient validation works
-- [x] Duplicate subject is rejected
-- [x] Subject actions appear in Audit Logs
-
----
-
-## 8. Schedules
-
-- [x] Admin can create schedule
-- [x] Admin can edit schedule
-- [x] Admin can delete schedule
-- [x] Time validation works
-- [x] Schedule conflict detection works
-- [x] Teacher schedule scope works
-- [x] Schedule actions appear in Audit Logs
-
----
-
-## 9. Attendance
-
-- [x] Admin can save attendance
-- [x] Teacher can save attendance for assigned schedule
-- [x] Teacher cannot save attendance outside assigned schedule
-- [x] PRESENT status works
-- [x] ABSENT status works
-- [x] LATE status works
-- [x] Attendance update works
-- [x] Attendance actions appear in Audit Logs
-
----
-
-## 10. Grades
-
-- [x] Admin can save grades
-- [x] Teacher can save grades for assigned class/subject
-- [x] Teacher cannot save grades outside assigned scope
-- [x] Score validation works
-- [x] Score must be between 0 and 20
-- [x] Exam Type dropdown works
-- [x] Period dropdown works
-- [x] Grade update works
-- [x] Grade notification is created
-- [x] Grade actions appear in Audit Logs
-
----
-
-## 11. Assignments
-
-- [x] Admin can create assignment
-- [x] Teacher can create assignment for assigned class/subject
-- [x] Assignment submissions are created for students
-- [x] Students can view assignments
-- [x] Parents can view child assignments
-- [x] Assignment notification is created
-- [x] Assignment actions appear in Audit Logs
-
----
-
-## 12. Announcements
-
-- [x] Admin can create announcement
-- [x] Teacher can create allowed announcements
-- [x] Admin can edit announcement
-- [x] Admin can delete announcement
-- [x] Announcement audience works
-- [x] Announcement notification is created
-- [x] Announcement actions appear in Audit Logs
-- [x] Deleted announcement details are saved in Audit Logs
-
----
-
 ## 13. Reports
 
-- [x] Attendance report generates
-- [x] Attendance report exports PDF
-- [x] Attendance report exports Excel
-- [x] Grades report generates
-- [x] Grades report exports PDF
-- [x] Grades report exports Excel
-- [x] Student report generates
-- [x] Student report exports PDF
-- [x] Student report exports Excel
+### Attendance Report
+
+- [x] Attendance report page loads correctly
+- [x] Class filter works
+- [x] Date range filter works
+- [x] Attendance report generates correctly
+- [x] Attendance summary shows Students
+- [x] Attendance summary shows Present
+- [x] Attendance summary shows Absent
+- [x] Attendance summary shows Late
+- [x] Attendance summary shows Total Records
+- [x] Attendance table displays student rows
+- [x] Empty attendance report message displays correctly
+- [x] Attendance PDF export works
+- [x] Attendance Excel export works
+
+### Grades Report
+
+- [x] Grades report page loads correctly
+- [x] Class filter works
+- [x] Subject filter works
+- [x] Trimester filter works
+- [x] Grades report generates correctly
+- [x] Grades summary shows Students
+- [x] Grades summary shows Graded Students
+- [x] Grades summary shows Total Grades
+- [x] Grades summary shows Class Average
+- [x] Grades table displays student rows
+- [x] Empty grades report message displays correctly
+- [x] Grades PDF export works
+- [x] Grades Excel export works
+
+### Student Report
+
+- [x] Student report page loads correctly
+- [x] Class filter loads students
+- [x] Student filter works
+- [x] Trimester filter works
+- [x] Student report generates correctly
+- [x] Student summary shows General Average
+- [x] Student summary shows Best Score
+- [x] Student summary shows Absences
+- [x] Student summary shows Grades count
+- [x] Subject averages table displays correctly
+- [x] Empty student report message displays correctly
+- [x] Student PDF export works
+- [x] Student Excel export works
+
+### Reports UI / Export Validation
+
+- [x] Trimester labels display as Trimester 1 / Trimester 2 / Trimester 3
+- [x] Raw values like TRIMESTER_1 are not shown in report subtitles
+- [x] PDF export uses correct text encoding
+- [x] PDF export shows “School ERP — ...” correctly
+- [x] Export PDF and Export Excel buttons are aligned correctly
 
 ---
 
 ## 14. Settings
 
-- [x] School settings load
-- [x] School name updates
-- [x] School subtitle updates
-- [x] Academic year updates
-- [x] Default trimester updates
-- [x] Default report dates update
+- [x] Settings page loads correctly
+- [x] Admin can update school name
+- [x] Admin can update school subtitle
+- [x] Admin can update academic year
+- [x] Admin can update default trimester
+- [x] Admin can update default report dates
 - [x] Sidebar updates after saving settings
-- [x] Settings update appears in Audit Logs
+- [x] Settings update is saved in Audit Logs
+- [x] Non-admin users cannot access Settings
 
 ---
 
 ## 15. Audit Logs
 
-- [x] Admin can view Audit Logs
-- [x] Non-admin users cannot access Audit Logs
+- [x] Audit Logs page loads correctly
+- [x] Total logs card displays correctly
+- [x] Latest action card displays correctly
+- [x] Latest actor card displays correctly
+- [x] Pagination works
+- [x] Page size dropdown works
+- [x] Previous button works
+- [x] Next button works
+- [x] Details modal opens correctly
+- [x] Details modal closes correctly
+- [x] Details modal displays JSON clearly
 - [x] Filters work by action
 - [x] Filters work by entity
 - [x] Filters work by role
-- [x] Details popup opens
-- [x] Details popup closes
-- [x] Export Excel works
-- [x] Arabic names display correctly in Excel
-- [x] Latest audit action appears in Overview
+- [x] Empty state appears when no logs match filters
+- [x] Excel export works
+- [x] Audit Logs are admin-only
 
 ---
 
-## 16. Overview Dashboard
+## 16. Security
 
-- [x] Overview loads successfully
-- [x] Academic year card displays
-- [x] Current trimester card displays
-- [x] Platform users card displays
-- [x] Latest audit action card displays
-- [x] Recent users section displays
-- [x] Refresh Overview button works
-- [x] Sidebar school name loads from Settings
-- [x] Sidebar school subtitle loads from Settings
+- [x] JWT authentication is active
+- [x] Password hashing uses bcrypt
+- [x] Protected backend routes reject missing token
+- [x] Protected backend routes reject invalid token
+- [x] Admin-only routes reject non-admin users
+- [x] Teacher scope restrictions are active
+- [x] Conversation participant protection is active
+- [x] Audit Logs are admin-only
+- [x] Settings are admin-only
+- [x] `.env` files are ignored by Git
+- [x] Secrets are not committed to GitHub
+
+Security validation:
+
+```txt
+Database URL and JWT secret are stored in environment variables.
+Expected: secrets are not committed to GitHub.
+Actual: .env files are ignored by .gitignore.
+Result: PASS.
+```
 
 ---
 
-## 17. Build Validation
+## 17. Build And Runtime Validation
 
 ### Backend
 
 - [x] Backend starts successfully
+- [x] Backend listens on port 5000
+- [x] Backend process is visible as node.exe
+- [x] Backend API is reachable locally
+
+Expected backend output:
 
 ```txt
 🚀 Server is running on http://localhost:5000
 ```
 
-Non-blocking warning:
-
-```txt
-SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
-```
-
-Result: PASS.
-
-### Frontend Dev Server
+### Frontend
 
 - [x] Frontend starts successfully
+- [x] Frontend runs on port 5173
+- [x] Frontend opens in the browser
+- [x] Hot module reload works
+
+Expected frontend output:
 
 ```txt
 Local: http://localhost:5173/
 ```
 
-Result: PASS.
-
-### Frontend Production Build
+### Production Build
 
 - [x] Frontend production build succeeds
+- [x] Build completes with “✓ built”
+- [x] Large chunk warning is non-blocking
+
+Expected build output:
 
 ```txt
-✓ 1751 modules transformed.
-✓ built in 807ms
+✓ built
 ```
-
-Non-blocking warning:
-
-```txt
-Some chunks are larger than 500 kB after minification.
-```
-
-Result: PASS.
 
 ---
 
-## Final Result
+## 18. Final Git Validation
+
+- [x] Root repository is pushed
+- [x] Backend repository is pushed
+- [x] Web frontend repository is pushed
+- [x] Backend working tree is clean
+- [x] Web working tree is clean
+- [x] Root repository is clean except school-erp-mobile
+- [x] school-erp-mobile changes are intentionally left untouched
+
+Final Git status:
 
 ```txt
-Authentication: PASS
-Role-based access: PASS
-Dashboard navigation: PASS
-Notifications: PASS
-Messages: PASS
-Users: PASS
-Classes: PASS
-Subjects: PASS
-Schedules: PASS
-Attendance: PASS
-Grades: PASS
-Assignments: PASS
-Announcements: PASS
-Reports: PASS
-Settings: PASS
-Audit Logs: PASS
-Overview dashboard: PASS
-Frontend dev server: PASS
-Frontend build: PASS
-Backend server: PASS
+Root repo: clean except school-erp-mobile
+Backend: clean
+Web: clean
+Mobile: modified, left untouched
+```
 
-Overall result: PASS
+---
+
+## 19. Final Result
+
+```txt
+School ERP final web/backend validation: PASS
 ```
