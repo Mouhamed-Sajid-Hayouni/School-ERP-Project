@@ -64,3 +64,12 @@ Test method: Expo Go using npm run start
 - Mobile profile image displays
 - Git root is clean
 - Backend, web, and mobile are on main and synced with origin
+
+## Release Tags
+
+- v1.0-profile-images: Stable release for profile image upload/display, deployment cleanup, mobile support, and password security cleanup.
+- v1.0.1-sidebar-avatar: Patch release for showing the logged-in user's real profile image in the web sidebar.
+
+## Latest Patch
+
+The web sidebar now displays the current user's uploaded profile image instead of initials.
