@@ -73,3 +73,18 @@ Test method: Expo Go using npm run start
 ## Latest Patch
 
 The web sidebar now displays the current user's uploaded profile image instead of initials.
+
+## Cloudinary Image Storage Patch
+
+- v1.0.2-cloudinary-images: Patch release for persistent profile image storage.
+- Profile images are now uploaded to Cloudinary instead of Render local disk.
+- New profileImage values are stored as Cloudinary URLs:
+  https://res.cloudinary.com/...
+- Old /uploads/... profile images should be re-uploaded once.
+- Cloudinary credentials are stored only in Render environment variables.
+
+## Required Render Environment Variables
+
+- CLOUDINARY_CLOUD_NAME
+- CLOUDINARY_API_KEY
+- CLOUDINARY_API_SECRET
