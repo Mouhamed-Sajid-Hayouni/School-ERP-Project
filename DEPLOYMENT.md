@@ -97,3 +97,14 @@ The web sidebar now displays the current user's uploaded profile image instead o
 - Parents, teachers, and admins are the direct system users.
 - Direct student login returns:
   Student accounts cannot access the system directly. Please use a parent account.
+
+## Student Record Password Policy Patch
+
+- v1.0.4-student-record-password-policy: Patch release for student account creation rules.
+- Student records can now be created without entering a login password.
+- The backend generates an internal random password for student records when no password is provided.
+- Student accounts still cannot log in directly.
+- Parents, teachers, and admins remain the direct system users.
+- In the web Users form:
+  - STUDENT: password field is hidden.
+  - ADMIN, TEACHER, PARENT: password field is visible and required.
