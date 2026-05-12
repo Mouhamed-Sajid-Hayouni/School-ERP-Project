@@ -88,3 +88,12 @@ The web sidebar now displays the current user's uploaded profile image instead o
 - CLOUDINARY_CLOUD_NAME
 - CLOUDINARY_API_KEY
 - CLOUDINARY_API_SECRET
+
+## Student Login Policy Patch
+
+- v1.0.3-student-login-policy: Patch release for primary-school access rules.
+- Students remain ERP records for classes, attendance, grades, bulletins, and parent follow-up.
+- Student accounts cannot log in directly to the system.
+- Parents, teachers, and admins are the direct system users.
+- Direct student login returns:
+  Student accounts cannot access the system directly. Please use a parent account.
