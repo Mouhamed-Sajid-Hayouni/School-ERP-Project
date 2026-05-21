@@ -253,7 +253,7 @@ After deploying frontend:
 - Login page works
 - Admin login works
 - Teacher login works
-- Student login works
+- Student direct login is blocked
 - Parent login works
 - Sidebar loads
 - Notifications bell loads

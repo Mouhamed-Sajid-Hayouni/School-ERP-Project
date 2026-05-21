@@ -16,8 +16,7 @@ Validated areas include:
 
 - Web admin dashboard
 - Teacher workspace
-- Student portal
-- Parent portal
+- Parent portal for linked child follow-up
 - Notifications
 - Messages
 - Reports
@@ -84,12 +83,13 @@ Current phase: **Phase 8 - Stabilization, reporting, settings, and production re
 
 ## Roles
 
-The system supports four roles:
+The system supports three direct-login roles and student records:
 
 - ADMIN
 - TEACHER
-- STUDENT
 - PARENT
+
+Students are school records only and cannot log in directly.
 
 ---
 
@@ -126,19 +126,9 @@ Teacher has scoped access to:
 
 Teacher cannot access admin-only tabs such as users, classes, subjects, reports, or settings.
 
-### Student
+### Student Records
 
-Student can access:
-
-- My Portal
-- Weekly timetable
-- Grades
-- Attendance / absences
-- Assignments
-- Announcements
-- Notifications
-- Messages
-- Bulletin export
+Students are managed as school records for classes, grades, attendance, assignments, and bulletins. They do not have direct system access.
 
 ### Parent
 
@@ -163,21 +153,18 @@ Parent can access:
 
 - Admin login
 - Teacher login
-- Student login
 - Parent login
 - JWT-protected API routes
 - Logout
 
 ### Users
 
-- Create users
-- Edit users
-- Delete users
-- Assign roles
-- Create student profiles
-- Create teacher profiles
-- Create parent profiles
-- Link parent to student
+- View users in read-only mode
+- View roles and linked profiles
+- View student records without direct login duties
+- View teacher profiles
+- View parent profiles
+- Link parent records to student records through existing data
 
 ### Classes
 
@@ -212,26 +199,23 @@ Parent can access:
 - Add and update grades
 - Support trimester periods: TRIMESTER_1, TRIMESTER_2, TRIMESTER_3
 - Teacher grade access is scoped
-- Student and parent receive grade notifications
+- Parent accounts receive linked child grade notifications
 - Student summaries and bulletins are generated
 
 ### Assignments
 
 - Admin can create, edit, and delete assignments
 - Teacher can manage own assignments
-- Student assignments are visible in portal
-- Parent assignments are visible in portal
-- Student can mark assignment as done
-- Parent can mark assignment as done
+- Linked child assignments are visible in the parent portal
+- Parent can mark linked child assignment as done
 - Assignment notifications are created automatically
 
 ### Announcements
 
 Admin can create announcements for:
 
-- All users
-- Students
-- Parents
+- Allowed system users
+- Parent accounts
 - Teachers
 - Specific class
 
@@ -243,8 +227,8 @@ Teacher can create announcements for:
 Teacher cannot create announcements for:
 
 - All users
-- Students globally
-- Parents globally
+- Parent accounts globally
+- Unscoped audiences
 
 Announcement notifications are created automatically.
 
@@ -278,9 +262,8 @@ Private internal messaging system.
 
 Supported behavior:
 
-- Admin can message users
+- Admin can message allowed direct-login users
 - Teacher can message allowed users
-- Student can message allowed users
 - Parent can message allowed users
 - Conversation list
 - Conversation detail view
@@ -294,7 +277,7 @@ Security behavior:
 - A user cannot open a conversation where they are not a participant.
 - Unauthorized conversation access returns 404 Conversation not found.
 
-### Student / Parent Portal
+### Parent Portal
 
 The portal includes:
 

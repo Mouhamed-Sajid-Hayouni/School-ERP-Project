@@ -4,7 +4,7 @@
 
 - [x] Admin login works
 - [x] Teacher login works
-- [x] Student login works
+- [x] Student direct login is blocked
 - [x] Parent login works
 - [x] Logout works
 - [x] Invalid login is rejected
@@ -44,7 +44,7 @@
 - [x] Audit Logs hidden
 - [x] Settings hidden
 
-### Student / Parent
+### Parent
 
 - [x] My Portal visible
 - [x] Messages visible
@@ -58,13 +58,12 @@
 ## 3. Users Management
 
 - [x] Admin can load users list
-- [x] Admin can create a user
-- [x] Admin can update a user
-- [x] Admin can delete a user
-- [x] Duplicate email is rejected
-- [x] Required fields are validated
-- [x] User role is saved correctly
-- [x] User actions are saved in Audit Logs
+- [x] User management is read-only
+- [x] Create user action is disabled
+- [x] Update user action is disabled
+- [x] Delete user action is disabled
+- [x] Password change action is disabled
+- [x] Profile-image upload action is disabled
 
 ---
 
@@ -110,7 +109,7 @@
 ## 7. Attendance
 
 - [x] Attendance page loads correctly
-- [x] Admin can save attendance
+- [x] Admin cannot save attendance
 - [x] Teacher can save attendance for assigned schedules
 - [x] Teacher cannot save attendance outside assigned scope
 - [x] Student status can be set to Present
@@ -159,8 +158,8 @@
 - [x] Announcements page loads correctly
 - [x] Admin can create announcement
 - [x] Teacher can create allowed announcement
-- [x] Announcement can target all users
-- [x] Announcement can target students
+- [x] Announcement can target allowed system users
+- [x] Announcement can target parent accounts and class audiences
 - [x] Announcement can target parents
 - [x] Announcement can target teachers
 - [x] Announcement can target a specific class
@@ -193,9 +192,9 @@
 
 ### Basic Flow
 
-- [x] Admin can start conversation with student
-- [x] Student can receive message
-- [x] Student can reply
+- [x] Admin cannot select students as direct message recipients
+- [x] Parent can receive allowed message
+- [x] Parent can reply
 - [x] Admin can see reply
 - [x] Conversation list loads
 - [x] Conversation detail loads
@@ -204,14 +203,14 @@
 ### Permissions
 
 - [x] Admin can message allowed users
-- [x] Student cannot open conversation where they are not a participant
+- [x] Unauthorized users cannot open conversations where they are not participants
 - [x] Unauthorized conversation access returns 404
 - [x] Backend does not expose non-participant conversations
 
 Security validation:
 
 ```txt
-Student tried to open admin/teacher-only conversation.
+Unauthorized user tried to open an admin/teacher-only conversation.
 Expected: 404 Conversation not found.
 Actual: 404 Conversation not found.
 Result: PASS.

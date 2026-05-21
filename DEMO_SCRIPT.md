@@ -16,14 +16,13 @@ This application is a full-stack school management platform built with:
 - PostgreSQL / Neon
 - JWT authentication
 
-The system supports four roles:
+The system supports three direct-login roles:
 
 - Admin
 - Teacher
-- Student
 - Parent
 
-Each role has different permissions and access to different modules.
+Students are managed as school records. They do not log in directly; parents use the portal to follow their linked children.
 
 ---
 
@@ -41,7 +40,7 @@ For example:
 
 - Admin can access Users, Classes, Subjects, Schedules, Reports, Settings, and Audit Logs.
 - Teacher can manage attendance, grades, assignments, and announcements for assigned classes.
-- Student and Parent have limited portal access.
+- Parent has limited portal access for linked children only.
 
 ---
 
@@ -69,14 +68,11 @@ This gives the admin a quick view of the school system status.
 
 In the Users module, the admin can:
 
-- Create users
-- Edit users
-- Delete users
-- Assign roles
+- View users and linked school profiles in read-only mode
+- Verify roles and linked records
+- Confirm that students remain school records without direct login duties
 
-The system validates email addresses and prevents duplicate emails.
-
-When the admin creates, updates, or deletes a user, the action is saved in Audit Logs.
+User creation, update, deletion, password change, and profile-image upload are disabled in the current validated scope.
 
 ---
 
@@ -115,7 +111,7 @@ Schedule creation, update, and deletion are saved in Audit Logs.
 
 ## 7. Attendance
 
-In the Attendance module, admin or teacher can mark students as:
+In the Attendance module, teachers can mark students as:
 
 - Present
 - Absent
@@ -144,7 +140,7 @@ The page includes:
 
 The score must be between 0 and 20.
 
-When a grade is saved, the system creates a notification for the student and parent.
+When a grade is saved, the system creates scoped notifications for the parent account.
 
 Grade creation and update are saved in Audit Logs.
 
@@ -165,7 +161,7 @@ An assignment includes:
 
 When an assignment is created, submissions are automatically created for students in the class.
 
-Students and parents can view assignments from their portal.
+Parents can view linked child assignments from the parent portal.
 
 Assignment actions are saved in Audit Logs.
 
@@ -177,9 +173,8 @@ In the Announcements module, admin or teacher can create announcements.
 
 Announcements can target:
 
-- All users
-- Students
-- Parents
+- Allowed system users
+- Parent accounts
 - Teachers
 - A specific class
 
@@ -197,8 +192,8 @@ The Messages module allows users to communicate based on permissions.
 
 For example:
 
-- Admin can message users
-- Students can reply to allowed conversations
+- Admin can message allowed direct-login users
+- Parents and teachers can reply to allowed conversations
 - Unauthorized users cannot access conversations they do not belong to
 
 The backend returns 404 if a user tries to access a conversation where they are not a participant.
