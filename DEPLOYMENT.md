@@ -14,22 +14,20 @@
 
 ## Main Features Completed
 
-- User profile image upload
-- Profile images displayed on web
-- Profile images displayed on mobile
+- Controlled parent/teacher account request workflow
+- Admin approval and rejection of pending account requests
+- Read-only admin user management
+- Direct user create/edit/delete/password/profile-image actions blocked
+- Student records kept without direct electronic login
 - Deployed backend API integration
 - Web production API fallback fixed
-- Mobile profile header layout improved
-- Expo package versions updated
-- Admin password update endpoint added
-- Admin password change field added to web UI
+- Mobile parent portal remains scoped to linked children
 
 ## Security Notes
 
 - Do not commit passwords or tokens.
-- Admin password was changed after testing.
-- Password changes are handled through:
-  PUT /api/users/:id/password
+- Direct password changes through admin user management are disabled.
+- The endpoint PUT /api/users/:id/password returns 403 in the current controlled account workflow.
 
 ## Deployment Platforms
 
@@ -54,33 +52,34 @@ Test method: Expo Go using npm run start
 
 - Backend health/API works
 - Web app opens in production
-- Admin login works with new password
-- Old admin password no longer works
+- Admin login works with current authorized credentials
+- Protected account request endpoints require an admin token
 - Users page loads without Failed to fetch
-- Existing profile images display
-- Upload Photo works
-- Uploaded image stays after refresh
+- Users page remains read-only for direct account changes
+- Pending account approve action works
+- Pending account reject action works
+- Direct profile-image upload action remains blocked
 - Mobile app loads with Expo Go
-- Mobile profile image displays
+- Mobile parent portal displays scoped linked-child data
 - Git root is clean
 - Backend, web, and mobile are on main and synced with origin
 
 ## Release Tags
 
-- v1.0-profile-images: Stable release for profile image upload/display, deployment cleanup, mobile support, and password security cleanup.
-- v1.0.1-sidebar-avatar: Patch release for showing the logged-in user's real profile image in the web sidebar.
+- v1.0-profile-images: Legacy release for earlier profile-image display work, deployment cleanup, mobile support, and password security cleanup.
+- v1.0.1-sidebar-avatar: Patch release for showing the logged-in user's stored profile image in the web sidebar.
 
 ## Latest Patch
 
-The web sidebar now displays the current user's uploaded profile image instead of initials.
+The web sidebar displays the current user's stored profile image instead of initials when one already exists.
 
 ## Cloudinary Image Storage Patch
 
 - v1.0.2-cloudinary-images: Patch release for persistent profile image storage.
-- Profile images are now uploaded to Cloudinary instead of Render local disk.
+- Legacy profile images used Cloudinary storage instead of Render local disk.
 - New profileImage values are stored as Cloudinary URLs:
   https://res.cloudinary.com/...
-- Old /uploads/... profile images should be re-uploaded once.
+- Old /uploads/... values should be migrated only if legacy image display is needed.
 - Cloudinary credentials are stored only in Render environment variables.
 
 ## Required Render Environment Variables
@@ -105,6 +104,6 @@ The web sidebar now displays the current user's uploaded profile image instead o
 - The backend generates an internal random password for student records when no password is provided.
 - Student accounts still cannot log in directly.
 - Parents, teachers, and admins remain the direct system users.
-- In the web Users form:
-  - STUDENT: password field is hidden.
-  - ADMIN, TEACHER, PARENT: password field is visible and required.
+- Current web Users page is read-only for direct account creation.
+- Parent and teacher accounts are requested through self-registration and then approved or rejected by admin.
+- Student records remain school records without direct login.
