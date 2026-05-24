@@ -8,9 +8,10 @@
 
 ### Admin
 Should be able to:
-- create users
-- edit users
-- delete users
+- view users in read-only mode
+- review pending parent/teacher account requests
+- approve or reject pending account requests
+- confirm direct user create/edit/delete/password/profile-image actions stay blocked
 - manage classes
 - manage subjects
 - manage schedules
@@ -43,13 +44,14 @@ Should be able to:
 ## Web Testing Checklist
 
 ### Users
-- Add User opens form
-- create ADMIN works
-- create TEACHER works
-- create STUDENT works with class selection
-- create PARENT works with linked student
-- Edit works
-- Delete works
+- Users page opens in read-only mode
+- Direct ADMIN/TEACHER/STUDENT account creation through admin user management is blocked
+- Parent and teacher accounts are requested through self-registration
+- Student records remain school records without direct login
+- Pending parent/teacher account requests load
+- Approve pending request works
+- Reject pending request works
+- Direct create/edit/delete/password/profile-image API actions return 403
 - Refresh works
 
 ### Classes
