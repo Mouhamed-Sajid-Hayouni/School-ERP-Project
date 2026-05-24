@@ -192,7 +192,7 @@ Parent can access:
 - Mark attendance by schedule and date
 - Track present, absent, and late statuses
 - Teacher can mark attendance only for own schedules
-- Admin can access attendance reports
+- Admin can supervise attendance through validated records without managing student attendance entry
 
 ### Grades
 
@@ -295,7 +295,6 @@ The portal includes:
 
 Reports module supports:
 
-- Attendance report
 - Grades report
 - Student full report
 
@@ -431,7 +430,6 @@ Expected health response:
 
 ### Reports
 
-- `GET /api/reports/attendance`
 - `GET /api/reports/grades`
 
 ### School Settings

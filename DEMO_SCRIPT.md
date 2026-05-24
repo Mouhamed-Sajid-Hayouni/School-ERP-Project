@@ -223,7 +223,6 @@ When a message notification is opened, it navigates directly to the correct conv
 
 The Reports module includes:
 
-- Attendance reports
 - Grades reports
 - Student reports
 

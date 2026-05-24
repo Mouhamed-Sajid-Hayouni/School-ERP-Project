@@ -224,21 +224,11 @@ Result: PASS.
 
 ## 13. Reports
 
-### Attendance Report
+### Attendance / Absence Report Boundary
 
-- [x] Attendance report page loads correctly
-- [x] Class filter works
-- [x] Date range filter works
-- [x] Attendance report generates correctly
-- [x] Attendance summary shows Students
-- [x] Attendance summary shows Present
-- [x] Attendance summary shows Absent
-- [x] Attendance summary shows Late
-- [x] Attendance summary shows Total Records
-- [x] Attendance table displays student rows
-- [x] Empty attendance report message displays correctly
-- [x] Attendance PDF export works
-- [x] Attendance Excel export works
+- [x] Attendance report endpoint remains blocked
+- [x] Student attendance entry remains teacher responsibility
+- [x] Admin reports focus on grades and student academic summaries
 
 ### Grades Report
 
