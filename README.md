@@ -396,7 +396,7 @@ Expected health response:
 - `POST /api/grades` — teacher-only scoped grade save/update
 - `GET /api/student-summary/:studentId` — scoped admin/teacher/parent view
 - `GET /api/student-bulletin/:studentId` — scoped admin/teacher/parent bulletin view
-- `POST /api/notify-bulletin/:studentId` — admin/teacher scoped bulletin notification
+- `POST /api/notify-bulletin/:studentId` — teacher-only scoped bulletin notification
 
 ### Assignments
 
