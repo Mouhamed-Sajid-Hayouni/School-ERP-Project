@@ -127,7 +127,7 @@
 ## 8. Grades
 
 - [x] Grades page loads correctly
-- [x] Admin can save grades
+- [x] Admin can view grades reports in read-only mode
 - [x] Teacher can save grades for assigned class and subject
 - [x] Teacher cannot save grades outside assigned scope
 - [x] Class selection works
@@ -137,8 +137,8 @@
 - [x] Score must be between 0 and 20
 - [x] Grade comments can be saved
 - [x] Grade creation creates notification
-- [x] Grade update works
-- [x] Grade actions are saved in Audit Logs
+- [x] Teacher grade update works
+- [x] Teacher grade actions are saved in Audit Logs
 
 ---
 

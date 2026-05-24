@@ -196,7 +196,7 @@ Parent can access:
 
 ### Grades
 
-- Add and update grades
+- Teachers add and update grades for assigned classes and subjects
 - Support trimester periods: TRIMESTER_1, TRIMESTER_2, TRIMESTER_3
 - Teacher grade access is scoped
 - Parent accounts receive linked child grade notifications
@@ -392,11 +392,11 @@ Expected health response:
 
 ### Grades / Bulletin
 
-- `GET /api/grades/:classId/:subjectId?period=...`
-- `POST /api/grades`
-- `GET /api/student-summary/:studentId`
-- `GET /api/student-bulletin/:studentId`
-- `POST /api/notify-bulletin/:studentId`
+- `GET /api/grades/:classId/:subjectId?period=...` — teacher-only scoped grade management view
+- `POST /api/grades` — teacher-only scoped grade save/update
+- `GET /api/student-summary/:studentId` — scoped admin/teacher/parent view
+- `GET /api/student-bulletin/:studentId` — scoped admin/teacher/parent bulletin view
+- `POST /api/notify-bulletin/:studentId` — admin/teacher scoped bulletin notification
 
 ### Assignments
 

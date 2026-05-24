@@ -128,7 +128,7 @@ Attendance actions are also saved in Audit Logs.
 
 ## 8. Grades
 
-In the Grades module, admin or teacher can enter student grades.
+In the Grades module, teachers enter and update student grades for their assigned classes and subjects. Admin can consult grade reports for supervision only.
 
 The page includes:
 
@@ -143,7 +143,7 @@ The score must be between 0 and 20.
 
 When a grade is saved, the system creates scoped notifications for the parent account.
 
-Grade creation and update are saved in Audit Logs.
+Teacher grade creation and update are saved in Audit Logs.
 
 ---
 
@@ -263,7 +263,7 @@ It tracks important actions such as:
 - Subject creation and deletion
 - Schedule creation, update, and deletion
 - Attendance creation and update
-- Grade creation and update
+- Teacher grade creation and update
 - Teacher assignment creation, update, and deletion
 - Announcement creation, update, and deletion
 - School settings update
