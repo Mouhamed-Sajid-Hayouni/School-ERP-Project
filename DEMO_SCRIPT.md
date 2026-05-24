@@ -73,6 +73,7 @@ In the Users module, the admin can:
 - Confirm that students remain school records without direct login duties
 
 User creation, update, deletion, password change, and profile-image upload are disabled in the current validated scope.
+Forgotten-password handling is available as a controlled request from the login page. The system shows a generic message and guides the parent or teacher to contact school administration; it does not directly reset the password or expose whether the email exists.
 
 ---
 

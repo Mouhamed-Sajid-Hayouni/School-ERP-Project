@@ -63,6 +63,10 @@
 - [x] Update user action is disabled
 - [x] Delete user action is disabled
 - [x] Password change action is disabled
+- [x] Forgot-password request is available from the login page
+- [x] Password-reset request returns a generic safe message
+- [x] Invalid password-reset email format returns 400
+- [x] Direct password update route remains protected/blocked
 - [x] Profile-image upload action is disabled
 
 ---
