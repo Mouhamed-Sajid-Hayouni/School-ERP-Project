@@ -8,7 +8,7 @@
 
 The School ERP System is a multi-interface platform composed of:
 - a web admin/teacher dashboard
-- a mobile student/parent portal
+- a mobile parent portal for linked-child follow-up
 - a shared backend API
 - a PostgreSQL relational database
 
