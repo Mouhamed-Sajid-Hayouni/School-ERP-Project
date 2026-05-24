@@ -129,4 +129,4 @@ After any frontend change:
 After any mobile change:
 - APK builds successfully
 - parent login does not crash
-- student login still works
+- direct student login remains blocked
