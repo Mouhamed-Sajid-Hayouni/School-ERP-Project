@@ -145,15 +145,15 @@
 ## 9. Assignments
 
 - [x] Assignments page loads correctly
-- [x] Admin can create assignment
+- [x] Admin can view assignments in read-only mode
 - [x] Teacher can create assignment for assigned class and subject
 - [x] Teacher cannot create assignment outside assigned scope
 - [x] Assignment requires class, subject, teacher, title, description, and due date
 - [x] Assignment submissions are created for students
 - [x] Assignment creates notifications
-- [x] Assignment can be updated
-- [x] Assignment can be deleted
-- [x] Assignment actions are saved in Audit Logs
+- [x] Teacher can update own assignment
+- [x] Teacher can delete own assignment
+- [x] Teacher assignment actions are saved in Audit Logs
 
 ---
 

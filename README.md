@@ -204,8 +204,8 @@ Parent can access:
 
 ### Assignments
 
-- Admin can create, edit, and delete assignments
-- Teacher can manage own assignments
+- Admin can view assignments for supervision and reporting only
+- Teacher can create, update, and delete own assignments for assigned classes and subjects
 - Linked child assignments are visible in the parent portal
 - Parent can mark linked child assignment as done
 - Assignment notifications are created automatically
@@ -400,12 +400,12 @@ Expected health response:
 
 ### Assignments
 
-- `GET /api/assignments`
-- `POST /api/assignments`
-- `PUT /api/assignments/:id`
-- `DELETE /api/assignments/:id`
-- `GET /api/my-assignments`
-- `PUT /api/assignment-submissions/:id`
+- `GET /api/assignments` — admin/teacher read access
+- `POST /api/assignments` — teacher only
+- `PUT /api/assignments/:id` — teacher only
+- `DELETE /api/assignments/:id` — teacher only
+- `GET /api/my-assignments` — parent-scoped child assignments
+- `PUT /api/assignment-submissions/:id` — parent-scoped child submission status
 
 ### Announcements
 

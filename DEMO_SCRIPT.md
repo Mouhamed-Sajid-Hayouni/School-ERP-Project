@@ -149,7 +149,7 @@ Grade creation and update are saved in Audit Logs.
 
 ## 9. Assignments
 
-In the Assignments module, admin or teacher can create assignments.
+In the Assignments module, teachers create and manage assignments for their assigned classes and subjects. Admin can consult assignment lists for supervision only.
 
 An assignment includes:
 
@@ -164,7 +164,7 @@ When an assignment is created, submissions are automatically created for student
 
 Parents can view linked child assignments from the parent portal.
 
-Assignment actions are saved in Audit Logs.
+Teacher assignment actions are saved in Audit Logs.
 
 ---
 
@@ -264,7 +264,7 @@ It tracks important actions such as:
 - Schedule creation, update, and deletion
 - Attendance creation and update
 - Grade creation and update
-- Assignment creation, update, and deletion
+- Teacher assignment creation, update, and deletion
 - Announcement creation, update, and deletion
 - School settings update
 
