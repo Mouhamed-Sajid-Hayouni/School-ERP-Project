@@ -117,7 +117,7 @@ Should be able to:
 After any backend change:
 - login still works
 - protected routes still work
-- `/api/my-portal` still works for both student and parent
+- `/api/my-portal` remains parent-only and direct student login remains blocked
 - schedules update still works
 
 After any frontend change:
