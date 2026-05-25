@@ -625,6 +625,7 @@ School ERP is stable and feature-complete for the current scope.
 
 Current validation status:
 
+- Frontend lint passes with 0 errors and 0 warnings.
 - Frontend build passes.
 - Backend runs.
 - Database health check passes.

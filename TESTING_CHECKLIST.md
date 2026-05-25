@@ -363,6 +363,7 @@ Local: http://localhost:5173/
 
 ### Production Build
 
+- [x] Frontend lint passes with 0 errors and 0 warnings
 - [x] Frontend production build succeeds
 - [x] Build completes with “✓ built”
 - [x] Large chunk warning is non-blocking
