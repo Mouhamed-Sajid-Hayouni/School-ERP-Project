@@ -1,0 +1,14 @@
+﻿[submodule "school-erp-backend"]
+    path = school-erp-backend
+    url = https://github.com/Mouhamed-Sajid-Hayouni/school-erp-backend.git
+    branch = main
+
+[submodule "school-erp-web"]
+    path = school-erp-web
+    url = https://github.com/Mouhamed-Sajid-Hayouni/school-erp-web.git
+    branch = main
+
+[submodule "school-erp-mobile"]
+    path = school-erp-mobile
+    url = https://github.com/Mouhamed-Sajid-Hayouni/school-erp-mobile.git
+    branch = main
