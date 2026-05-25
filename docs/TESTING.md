@@ -114,6 +114,8 @@ Should be able to:
 
 ## Regression Checklist
 
+- Parent/teacher runtime smoke tests require known local credentials or a dedicated demo seed; if no such credentials exist, use code-side boundary scans instead.
+
 After any backend change:
 - login still works
 - protected routes still work
