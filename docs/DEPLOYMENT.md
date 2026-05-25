@@ -20,6 +20,6 @@ This project is deployed across:
 Set these in Render:
 
 ```env
-DATABASE_URL="postgresql://neondb_owner:npg_4Uyb6jqaunRS@ep-orange-shape-alrgercn.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-JWT_SECRET="super_secret_school_key_123"
+DATABASE_URL="your_postgresql_connection_string"
+JWT_SECRET="your_strong_jwt_secret"
 PORT=5000
