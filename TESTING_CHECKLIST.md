@@ -333,6 +333,14 @@ Result: PASS.
 
 ---
 
+
+### Dependency Audit Follow-up
+
+- [x] Web dependency audit received a targeted lockfile fix.
+- [x] Backend `qs` dependency audit issue was fixed with a targeted lockfile update.
+- [x] Mobile dependencies were checked with `npx expo install --check` and are aligned with Expo SDK 54.
+- [ ] Remaining `xlsx`, Prisma/toolchain, and Expo/toolchain advisories require dedicated follow-up instead of broad automatic fixes.
+
 ## 17. Build And Runtime Validation
 
 ### Backend

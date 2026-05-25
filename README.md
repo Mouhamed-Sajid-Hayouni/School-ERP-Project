@@ -604,6 +604,17 @@ Validated areas:
 
 ---
 
+
+### Dependency Audit Status
+
+Current dependency audit status after the targeted web and backend fixes:
+
+- Web audit was reduced to known remaining items: `brace-expansion` through the lint/dev path and `xlsx`, which currently has no direct npm audit fix.
+- Backend audit had the targeted `qs` issue fixed; remaining findings are mainly Prisma/toolchain transitive advisories and should not be fixed with a broad automatic update without a dedicated Prisma validation cycle.
+- Mobile dependencies are aligned with Expo SDK 54; remaining audit findings are mostly Expo/toolchain transitive advisories, and forced fixes may require a breaking Expo upgrade.
+
+Do not run broad `npm audit fix --force` on mobile or backend unless planning a full upgrade and regression test cycle.
+
 ## Recommended Next Improvements
 
 Do not add a large new module immediately.
