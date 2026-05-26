@@ -1,12 +1,12 @@
-﻿# Final Project Handoff Summary
+# Final Project Handoff Summary
 
 ## Current Stable Checkpoint
 
-`final-all-stack-verification-v2.69`
+`final-arabic-audit-verification-v2.75`
 
 Root commit:
 
-`58fc198 Document dependency audit follow-up`
+`2f463d7 Update overview audit action Arabic fallback`
 
 ## Verification Status
 
@@ -48,8 +48,20 @@ Recent regression checks confirmed:
 - User management remains read-only except pending account approve/reject workflow.
 - No real tracked secrets were found; only placeholder environment variables remain in docs.
 
+
+## Final Arabic UI Audit Fixes
+
+Additional Arabic UI fixes were completed after the first handoff summary:
+
+- The audit log table header now uses Arabic wording: `الإجراءات`.
+- The values inside the `الإجراءات` column now use Arabic fallback formatting instead of raw enum text.
+- The dashboard card `آخر عملية في سجل النظام` now uses Arabic fallback formatting instead of raw enum text.
+- The final verification checkpoint is `final-arabic-audit-verification-v2.75`.
+
+Fresh clone and submodule smoke tests passed for the latest final checkpoint.
+
 ## Delivery Recommendation
 
-Use `final-all-stack-verification-v2.69` as the final technical delivery checkpoint for the current project scope.
+Use `final-arabic-audit-verification-v2.75` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
