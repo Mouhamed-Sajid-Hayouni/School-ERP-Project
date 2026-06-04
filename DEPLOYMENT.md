@@ -75,9 +75,9 @@ Test method: Expo Go using npm run start
 - v1.0-profile-images: Legacy release for earlier profile-image display work, deployment cleanup, mobile support, and password security cleanup.
 - v1.0.1-sidebar-avatar: Patch release for showing the logged-in user's stored profile image in the web sidebar.
 
-## Latest Patch
+## Historical Sidebar Avatar Patch
 
-The web sidebar displays the current user's stored profile image instead of initials when one already exists.
+This legacy patch documented sidebar avatar display for accounts that already had a stored profile image. In the current controlled account workflow, direct profile-image changes through admin user management remain blocked.
 
 ## Cloudinary Image Storage Patch
 

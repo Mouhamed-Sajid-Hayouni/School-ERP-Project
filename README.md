@@ -361,8 +361,8 @@ Expected health response:
 ### Users
 
 - `GET /api/users`
-- `PUT /api/users/:id`
-- `DELETE /api/users/:id`
+- Direct user mutation routes such as `PUT /api/users/:id` and `DELETE /api/users/:id` are blocked in the controlled account workflow.
+- Admin user management is limited to read-only review plus approving/rejecting pending parent/teacher account requests.
 
 ### Classes
 
