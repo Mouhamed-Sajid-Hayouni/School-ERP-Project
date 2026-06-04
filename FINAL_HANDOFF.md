@@ -28,7 +28,7 @@ The latest verification passed:
 - Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
 - The password-reset request response now mentions active admin, parent, or teacher accounts.
 - No direct password change is introduced by the forgot-password request flow.
-- Fresh clone and submodule verification is pending for `password-reset-support-wording-v2.90`.
+- Fresh clone and submodule verification passed for `final-handoff-password-reset-support-v2.91`.
 - Root, backend, web, and mobile repositories were clean and up to date.
 
 ## Latest Password Reset Wording Update
