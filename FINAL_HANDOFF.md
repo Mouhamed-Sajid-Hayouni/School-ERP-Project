@@ -2,26 +2,49 @@
 
 ## Current Stable Checkpoint
 
-`final-arabic-audit-verification-v2.75`
+`teacher-absence-status-badges-v2.84`
 
 Root commit:
 
-`2f463d7 Update overview audit action Arabic fallback`
+`edf4272 Update teacher absence status badges`
+
+Web submodule commit:
+
+`72e4abc Add teacher absence status badges`
+
+Backend submodule commit:
+
+`9f36809`
+
+Mobile submodule commit:
+
+`9c97637`
 
 ## Verification Status
 
-The final all-stack verification passed:
+The latest all-stack verification passed:
 
 - Backend build passed.
-- Web lint passed with 0 errors and 0 warnings.
-- Web production build passed with the known non-blocking Vite chunk-size warning.
+- Web lint passed.
+- Web production build passed with only the known non-blocking Vite chunk-size warning.
 - Mobile verification passed.
-- Arabic encoding check passed.
+- Mobile Arabic encoding check passed.
+- Fresh clone and submodule verification passed for `teacher-absence-status-badges-v2.84`.
+- Runtime browser check passed for the teacher absence status badges.
 - Root, backend, web, and mobile repositories were clean and up to date.
+
+## Latest UI Update
+
+The latest verified UI polish added clear teacher absence status badges:
+
+- Justified teacher absences are displayed as a green-style badge.
+- Unjustified teacher absences are displayed as an amber-style badge.
+- Summary cards still match the teacher absence table counts.
+- The teacher absence page keeps the admin/principal-side responsibility boundary.
 
 ## Dependency Audit Status
 
-Targeted dependency audit fixes were completed:
+Targeted dependency audit fixes were completed earlier:
 
 - Web lockfile was updated to clear the critical `jspdf` audit issue.
 - Backend lockfile was updated to fix the targeted `qs` issue.
@@ -41,27 +64,16 @@ Do not run broad `npm audit fix --force` on backend or mobile unless planning a 
 Recent regression checks confirmed:
 
 - Admin-only pages and backend routes remain protected.
-- Teacher-only attendance and grade flows remain teacher-gated.
+- Admin user management remains read-only except pending parent/teacher account approve/reject workflow.
+- Teacher-only student attendance and grade flows remain teacher-gated.
+- Teacher absence tracking remains admin/principal-side.
 - Assignment mutations remain teacher-only and scoped.
 - Parent portal remains scoped to linked children.
 - Student direct login remains blocked.
-- User management remains read-only except pending account approve/reject workflow.
 - No real tracked secrets were found; only placeholder environment variables remain in docs.
-
-
-## Final Arabic UI Audit Fixes
-
-Additional Arabic UI fixes were completed after the first handoff summary:
-
-- The audit log table header now uses Arabic wording: `الإجراءات`.
-- The values inside the `الإجراءات` column now use Arabic fallback formatting instead of raw enum text.
-- The dashboard card `آخر عملية في سجل النظام` now uses Arabic fallback formatting instead of raw enum text.
-- The final verification checkpoint is `final-arabic-audit-verification-v2.75`.
-
-Fresh clone and submodule smoke tests passed for the latest final checkpoint.
 
 ## Delivery Recommendation
 
-Use `final-arabic-audit-verification-v2.75` as the final technical delivery checkpoint for the current project scope.
+Use `teacher-absence-status-badges-v2.84` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
