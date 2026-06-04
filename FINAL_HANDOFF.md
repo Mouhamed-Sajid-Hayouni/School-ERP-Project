@@ -2,19 +2,19 @@
 
 ## Current Stable Checkpoint
 
-`teacher-absence-status-badges-v2.84`
+`admin-password-reset-request-v2.86`
 
 Root commit:
 
-`edf4272 Update teacher absence status badges`
+`0d19c12 Update admin password reset request flow`
+
+Backend submodule commit:
+
+`bc8d37b Allow admin password reset requests`
 
 Web submodule commit:
 
 `72e4abc Add teacher absence status badges`
-
-Backend submodule commit:
-
-`9f36809`
 
 Mobile submodule commit:
 
@@ -22,16 +22,28 @@ Mobile submodule commit:
 
 ## Verification Status
 
-The latest all-stack verification passed:
+The latest verification passed:
 
 - Backend build passed.
-- Web lint passed.
-- Web production build passed with only the known non-blocking Vite chunk-size warning.
-- Mobile verification passed.
-- Mobile Arabic encoding check passed.
-- Fresh clone and submodule verification passed for `teacher-absence-status-badges-v2.84`.
-- Runtime browser check passed for the teacher absence status badges.
+- Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
+- The password-reset request response now mentions active admin, parent, or teacher accounts.
+- No direct password change is introduced by the forgot-password request flow.
+- Fresh clone and submodule verification passed for `admin-password-reset-request-v2.86`.
 - Root, backend, web, and mobile repositories were clean and up to date.
+
+## Latest Backend Update
+
+The latest verified backend update allows active admin accounts to use the controlled forgot-password request flow.
+
+This means the admin account `sajid@school.com` can use the "Forgot your password?" button and receive the same safe generic guidance as parent and teacher accounts.
+
+The flow remains controlled:
+
+- The request is sent to the backend route `POST /api/password-reset/request`.
+- Active ADMIN, PARENT, and TEACHER accounts are included in the audit/request flow.
+- The response remains generic and safe.
+- The system does not directly reset or expose the password.
+- The user is guided to contact school administration.
 
 ## Latest UI Update
 
@@ -74,6 +86,6 @@ Recent regression checks confirmed:
 
 ## Delivery Recommendation
 
-Use `teacher-absence-status-badges-v2.84` as the final technical delivery checkpoint for the current project scope.
+Use `admin-password-reset-request-v2.86` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
