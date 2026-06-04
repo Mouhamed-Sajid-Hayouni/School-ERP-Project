@@ -2,19 +2,19 @@
 
 ## Current Stable Checkpoint
 
-`web-admin-forgot-password-text-v2.88`
+`password-reset-support-wording-v2.90`
 
 Root commit:
 
-`29bb147 Update web forgot password admin wording`
+`15305d4 Update password reset support wording`
 
 Backend submodule commit:
 
-`bc8d37b Allow admin password reset requests`
+`2b7bbd6 Update password reset support wording`
 
 Web submodule commit:
 
-`757b93f Update forgot password admin wording`
+`7f8b9b3 Update forgot password support wording`
 
 Mobile submodule commit:
 
@@ -28,8 +28,18 @@ The latest verification passed:
 - Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
 - The password-reset request response now mentions active admin, parent, or teacher accounts.
 - No direct password change is introduced by the forgot-password request flow.
-- Fresh clone and submodule verification passed for `web-admin-forgot-password-text-v2.88`.
+- Fresh clone and submodule verification is pending for `password-reset-support-wording-v2.90`.
 - Root, backend, web, and mobile repositories were clean and up to date.
+
+## Latest Password Reset Wording Update
+
+The latest verified update improves the forgot-password guidance for admin, parent, and teacher accounts.
+
+The backend response now guides users to contact school administration or technical support, which is clearer for admin accounts because the admin represents the school administration.
+
+The Arabic web interface now says: إدارة المدرسة أو الدعم التقني.
+
+Validation passed: backend wording present, web Arabic support wording present, old backend-only wording removed, no mojibake, backend build passed, and web lint/build passed.
 
 ## Latest Web Update
 
@@ -51,7 +61,7 @@ The flow remains controlled:
 - Active ADMIN, PARENT, and TEACHER accounts are included in the audit/request flow.
 - The response remains generic and safe.
 - The system does not directly reset or expose the password.
-- The user is guided to contact school administration.
+- The user is guided to contact school administration or technical support.
 
 ## Latest UI Update
 
@@ -94,6 +104,6 @@ Recent regression checks confirmed:
 
 ## Delivery Recommendation
 
-Use `web-admin-forgot-password-text-v2.88` as the final technical delivery checkpoint for the current project scope.
+Use `password-reset-support-wording-v2.90` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
