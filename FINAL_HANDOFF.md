@@ -2,11 +2,11 @@
 
 ## Current Stable Checkpoint
 
-`admin-password-reset-request-v2.86`
+`web-admin-forgot-password-text-v2.88`
 
 Root commit:
 
-`0d19c12 Update admin password reset request flow`
+`29bb147 Update web forgot password admin wording`
 
 Backend submodule commit:
 
@@ -14,7 +14,7 @@ Backend submodule commit:
 
 Web submodule commit:
 
-`72e4abc Add teacher absence status badges`
+`757b93f Update forgot password admin wording`
 
 Mobile submodule commit:
 
@@ -28,8 +28,16 @@ The latest verification passed:
 - Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
 - The password-reset request response now mentions active admin, parent, or teacher accounts.
 - No direct password change is introduced by the forgot-password request flow.
-- Fresh clone and submodule verification passed for `admin-password-reset-request-v2.86`.
+- Fresh clone and submodule verification passed for `web-admin-forgot-password-text-v2.88`.
 - Root, backend, web, and mobile repositories were clean and up to date.
+
+## Latest Web Update
+
+The latest verified web update aligns the Arabic forgot-password text with the backend flow.
+
+The web login screen now mentions administrative, parent, and teacher accounts in the forgot-password guidance instead of parent/teacher only.
+
+Validation passed: admin wording present, old parent/teacher-only wording removed, no mojibake, web lint passed, and web build passed with only the known Vite chunk-size warning.
 
 ## Latest Backend Update
 
@@ -86,6 +94,6 @@ Recent regression checks confirmed:
 
 ## Delivery Recommendation
 
-Use `admin-password-reset-request-v2.86` as the final technical delivery checkpoint for the current project scope.
+Use `web-admin-forgot-password-text-v2.88` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
