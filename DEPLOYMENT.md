@@ -30,7 +30,7 @@
 - The endpoint PUT /api/users/:id/password returns 403 in the current controlled account workflow.
 - Forgotten-password support is handled through POST /api/password-reset/request.
 - The password-reset request endpoint returns a generic message and does not reveal whether an email exists.
-- Password-reset requests do not change passwords directly; users are guided to contact school administration or technical support.
+- Password-reset requests do not change passwords directly; users receive a secure reset link and choose a new password through the reset form.
 
 ## Deployment Platforms
 
@@ -57,7 +57,8 @@ Test method: Expo Go using npm run start
 - Web app opens in production
 - Admin login works with current authorized credentials
 - Protected account request endpoints require an admin token
-- Forgot-password request endpoint returns a generic safe response for valid email format
+- Forgot-password request endpoint returns a generic safe reset-link response for valid email format
+- POST /api/password-reset/confirm verifies the temporary reset token before updating the hashed password
 - Invalid forgot-password email format returns 400
 - Direct password update route remains protected/blocked
 - Users page loads without Failed to fetch

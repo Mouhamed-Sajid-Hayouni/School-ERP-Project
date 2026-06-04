@@ -63,7 +63,7 @@
 - [x] Update user action is disabled
 - [x] Delete user action is disabled
 - [x] Password change action is disabled
-- [x] Forgot-password request is available from the login page
+- [x] Self-service forgot-password reset is available from the login page
 - [x] Password-reset request returns a generic safe message
 - [x] Invalid password-reset email format returns 400
 - [x] Direct password update route remains protected/blocked

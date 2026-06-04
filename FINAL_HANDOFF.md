@@ -2,19 +2,19 @@
 
 ## Current Stable Checkpoint
 
-`password-reset-support-wording-v2.90`
+`self-service-password-reset-v2.93`
 
 Root commit:
 
-`15305d4 Update password reset support wording`
+`65522a1 Add self-service password reset flow`
 
 Backend submodule commit:
 
-`2b7bbd6 Update password reset support wording`
+`24cc57d Add self-service password reset endpoints`
 
 Web submodule commit:
 
-`7f8b9b3 Update forgot password support wording`
+`2037b17 Add self-service password reset UI`
 
 Mobile submodule commit:
 
@@ -27,15 +27,23 @@ The latest verification passed:
 - Backend build passed.
 - Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
 - The password-reset request response now mentions active admin, parent, or teacher accounts.
-- No direct password change is introduced by the forgot-password request flow.
-- Fresh clone and submodule verification passed for `final-handoff-password-reset-support-v2.91`.
+- Password changes are allowed only through a valid temporary reset token and password confirmation.
+- Fresh clone and submodule verification is pending for `self-service-password-reset-v2.93`.
 - Root, backend, web, and mobile repositories were clean and up to date.
+
+## Latest Self-Service Password Reset Update
+
+The latest verified feature adds a self-service password reset flow for active admin, parent, and teacher accounts.
+
+The forgot-password request now generates a temporary reset token and a reset link. In local demo mode, the link is returned/logged for testing. The user opens the link, enters a new password, confirms it, and the backend updates the password after hashing it with bcrypt.
+
+Security behavior was verified: the request response remains generic, invalid reset tokens return 400, and old reset links become unusable after the password is changed.
 
 ## Latest Password Reset Wording Update
 
 The latest verified update improves the forgot-password guidance for admin, parent, and teacher accounts.
 
-The backend response now guides users to contact school administration or technical support, which is clearer for admin accounts because the admin represents the school administration.
+The backend now generates a temporary self-service reset token and returns a generic reset-link response without revealing whether the email exists.
 
 The Arabic web interface now says: إدارة المدرسة أو الدعم التقني.
 
@@ -61,7 +69,7 @@ The flow remains controlled:
 - Active ADMIN, PARENT, and TEACHER accounts are included in the audit/request flow.
 - The response remains generic and safe.
 - The system does not directly reset or expose the password.
-- The user is guided to contact school administration or technical support.
+- The user resets the password through a secure reset link and password confirmation form.
 
 ## Latest UI Update
 
@@ -104,6 +112,6 @@ Recent regression checks confirmed:
 
 ## Delivery Recommendation
 
-Use `password-reset-support-wording-v2.90` as the final technical delivery checkpoint for the current project scope.
+Use `self-service-password-reset-v2.93` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
