@@ -2,7 +2,7 @@
 
 ## Current Stable Checkpoint
 
-`self-service-password-reset-v2.93`
+`real-email-password-reset-v2.96`
 
 Root commit:
 
@@ -10,7 +10,7 @@ Root commit:
 
 Backend submodule commit:
 
-`24cc57d Add self-service password reset endpoints`
+`2178a88 Send password reset emails via SMTP`
 
 Web submodule commit:
 
@@ -31,11 +31,19 @@ The latest verification passed:
 - Fresh clone and submodule verification passed for `self-service-password-reset-docs-v2.94`.
 - Root, backend, web, and mobile repositories were clean and up to date.
 
+## Latest SMTP Password Reset Email Update
+
+The latest verified update adds real SMTP email delivery for password-reset links.
+
+When SMTP variables are configured, the backend sends the secure reset link to the user's real account email. If SMTP is not configured or sending fails in local demo mode, the backend keeps the safe fallback by logging the reset link for testing.
+
+The feature was tested successfully with a real Gmail inbox. The Gmail App Password remains only in the local `.env` file and is not committed.
+
 ## Latest Self-Service Password Reset Update
 
 The latest verified feature adds a self-service password reset flow for active admin, parent, and teacher accounts.
 
-The forgot-password request now generates a temporary reset token and a reset link. In local demo mode, the link is returned/logged for testing. The user opens the link, enters a new password, confirms it, and the backend updates the password after hashing it with bcrypt.
+The forgot-password request now generates a temporary reset token and reset link. With SMTP configured, the link is sent to the user's real email inbox; in local fallback mode, it can still be logged for testing. The user opens the link, enters a new password, confirms it, and the backend updates the password after hashing it with bcrypt.
 
 Security behavior was verified: the request response remains generic, invalid reset tokens return 400, and old reset links become unusable after the password is changed.
 
@@ -112,6 +120,6 @@ Recent regression checks confirmed:
 
 ## Delivery Recommendation
 
-Use `self-service-password-reset-v2.93` as the final technical delivery checkpoint for the current project scope.
+Use `real-email-password-reset-v2.96` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.

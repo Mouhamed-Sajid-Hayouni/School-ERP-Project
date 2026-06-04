@@ -30,7 +30,7 @@
 - The endpoint PUT /api/users/:id/password returns 403 in the current controlled account workflow.
 - Forgotten-password support is handled through POST /api/password-reset/request.
 - The password-reset request endpoint returns a generic message and does not reveal whether an email exists.
-- Password-reset requests do not change passwords directly; users receive a secure reset link and choose a new password through the reset form.
+- Password-reset requests do not change passwords directly; users receive a secure reset link by email when SMTP is configured, then choose a new password through the reset form.
 
 ## Deployment Platforms
 
