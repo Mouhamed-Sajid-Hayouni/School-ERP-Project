@@ -28,7 +28,7 @@ The latest verification passed:
 - Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
 - The password-reset request response now mentions active admin, parent, or teacher accounts.
 - Password changes are allowed only through a valid temporary reset token and password confirmation.
-- Fresh clone and submodule verification is pending for `self-service-password-reset-v2.93`.
+- Fresh clone and submodule verification passed for `self-service-password-reset-docs-v2.94`.
 - Root, backend, web, and mobile repositories were clean and up to date.
 
 ## Latest Self-Service Password Reset Update
