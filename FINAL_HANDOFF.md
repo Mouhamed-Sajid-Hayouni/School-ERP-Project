@@ -2,124 +2,91 @@
 
 ## Current Stable Checkpoint
 
-`real-email-password-reset-v2.96`
+`mobile-bulletin-export-state-fix-v3.09`
 
 Root commit:
 
-`65522a1 Add self-service password reset flow`
+`0f6aaaa Fix mobile bulletin export state`
 
 Backend submodule commit:
 
-`2178a88 Send password reset emails via SMTP`
+`63d3dea Fix teacher schedule students user lookup`
 
 Web submodule commit:
 
-`2037b17 Add self-service password reset UI`
+`ca7d6aa Use teacher-scoped attendance students endpoint`
 
 Mobile submodule commit:
 
-`9c97637`
+`197081b Fix mobile bulletin export state`
 
 ## Verification Status
 
-The latest verification passed:
+The latest final verification passed:
 
-- Backend build passed.
-- Runtime API smoke test passed for `POST /api/password-reset/request` using `sajid@school.com`.
-- The password-reset request response now mentions active admin, parent, or teacher accounts.
-- Password changes are allowed only through a valid temporary reset token and password confirmation.
-- Fresh clone and submodule verification passed for `self-service-password-reset-docs-v2.94`.
-- Root, backend, web, and mobile repositories were clean and up to date.
+- Root, backend, web, and mobile repositories are clean and up to date.
+- Mobile local runtime files remain ignored and are not committed: `.env`, `.expo/`, `expo-env.d.ts`, and `node_modules/`.
+- Backend build passed before the final mobile export feature checkpoint.
+- Web lint and production build passed before the final mobile export feature checkpoint, with only the known non-blocking Vite chunk-size warning.
+- Mobile `npm run verify` passed, including lint and Arabic encoding check.
+- Real phone runtime test passed through Expo and Cloudflare tunnel.
+- The mobile parent portal loaded successfully after the hotfix.
+- The mobile PDF button `استخراج دفتر الأعداد PDF` appeared on child cards.
+- Tapping the PDF button generated a PDF and opened the Android share/open dialog.
+- The previous runtime error `ReferenceError: Property 'exportingChildId' doesn't exist` is fixed.
 
-## Latest SMTP Password Reset Email Update
+## Latest Mobile Update
 
-The latest verified update adds real SMTP email delivery for password-reset links.
+The final mobile update adds and verifies parent bulletin PDF export from the mobile parent portal.
 
-When SMTP variables are configured, the backend sends the secure reset link to the user's real account email. If SMTP is not configured or sending fails in local demo mode, the backend keeps the safe fallback by logging the reset link for testing.
+The implementation uses:
 
-The feature was tested successfully with a real Gmail inbox. The Gmail App Password remains only in the local `.env` file and is not committed.
+- `expo-print` to generate a PDF from the linked child's grades, subject averages, and absences.
+- `expo-sharing` to open the Android share/open dialog for the generated PDF.
+- A mobile parent portal button labeled `استخراج دفتر الأعداد PDF`.
 
-## Latest Self-Service Password Reset Update
+The hotfix `mobile-bulletin-export-state-fix-v3.09` adds the missing `exportingChildId` state used by the export button and loading state.
 
-The latest verified feature adds a self-service password reset flow for active admin, parent, and teacher accounts.
+## Current Functional Scope
 
-The forgot-password request now generates a temporary reset token and reset link. With SMTP configured, the link is sent to the user's real email inbox; in local fallback mode, it can still be logged for testing. The user opens the link, enters a new password, confirms it, and the backend updates the password after hashing it with bcrypt.
+### Admin
 
-Security behavior was verified: the request response remains generic, invalid reset tokens return 400, and old reset links become unusable after the password is changed.
+- Reviews users in read-only mode.
+- Approves or rejects pending parent/teacher account requests.
+- Reviews and processes child enrollment requests.
+- Manages classes.
+- Manages subjects.
+- Manages schedules.
+- Records teacher absences.
+- Consults reports and audit logs.
 
-## Latest Password Reset Wording Update
+### Teacher
 
-The latest verified update improves the forgot-password guidance for admin, parent, and teacher accounts.
+- Consults own schedules.
+- Records student attendance and absences for assigned schedules.
+- Manages assignments and grades within assigned scope.
+- Sends bulletin notifications within teacher scope.
 
-The backend now generates a temporary self-service reset token and returns a generic reset-link response without revealing whether the email exists.
+### Parent
 
-The Arabic web interface now says: إدارة المدرسة أو الدعم التقني.
+- Uses the web and mobile parent portal.
+- Sends child enrollment requests.
+- Tracks child enrollment request status.
+- Consults linked child academic information.
+- Consults schedules, grades, subject averages, announcements, and absences.
+- Exports the child bulletin as PDF on mobile.
 
-Validation passed: backend wording present, web Arabic support wording present, old backend-only wording removed, no mojibake, backend build passed, and web lint/build passed.
+## Role Boundary Reminder
 
-## Latest Web Update
-
-The latest verified web update aligns the Arabic forgot-password text with the backend flow.
-
-The web login screen now mentions administrative, parent, and teacher accounts in the forgot-password guidance instead of parent/teacher only.
-
-Validation passed: admin wording present, old parent/teacher-only wording removed, no mojibake, web lint passed, and web build passed with only the known Vite chunk-size warning.
-
-## Latest Backend Update
-
-The latest verified backend update allows active admin accounts to use the controlled forgot-password request flow.
-
-This means the admin account `sajid@school.com` can use the "Forgot your password?" button and receive the same safe generic guidance as parent and teacher accounts.
-
-The flow remains controlled:
-
-- The request is sent to the backend route `POST /api/password-reset/request`.
-- Active ADMIN, PARENT, and TEACHER accounts are included in the audit/request flow.
-- The response remains generic and safe.
-- The system does not directly reset or expose the password.
-- The user resets the password through a secure reset link and password confirmation form.
-
-## Latest UI Update
-
-The latest verified UI polish added clear teacher absence status badges:
-
-- Justified teacher absences are displayed as a green-style badge.
-- Unjustified teacher absences are displayed as an amber-style badge.
-- Summary cards still match the teacher absence table counts.
-- The teacher absence page keeps the admin/principal-side responsibility boundary.
-
-## Dependency Audit Status
-
-Targeted dependency audit fixes were completed earlier:
-
-- Web lockfile was updated to clear the critical `jspdf` audit issue.
-- Backend lockfile was updated to fix the targeted `qs` issue.
-- Mobile dependencies were checked with `npx expo install --check` and remain aligned with Expo SDK 54.
-
-Known remaining audit follow-up:
-
-- Web: `xlsx` remains with no direct npm audit fix available.
-- Web: `brace-expansion` remains through the lint/dev dependency path.
-- Backend: remaining advisories are mainly Prisma/toolchain transitive advisories.
-- Mobile: remaining advisories are mostly Expo/toolchain transitive advisories.
-
-Do not run broad `npm audit fix --force` on backend or mobile unless planning a dedicated Prisma/Expo upgrade and full regression test cycle.
-
-## Role And Security Boundary Status
-
-Recent regression checks confirmed:
-
-- Admin-only pages and backend routes remain protected.
-- Admin user management remains read-only except pending parent/teacher account approve/reject workflow.
-- Teacher-only student attendance and grade flows remain teacher-gated.
-- Teacher absence tracking remains admin/principal-side.
-- Assignment mutations remain teacher-only and scoped.
-- Parent portal remains scoped to linked children.
-- Student direct login remains blocked.
-- No real tracked secrets were found; only placeholder environment variables remain in docs.
+- Admin handles administrative management and teacher absence recording.
+- Teacher handles student attendance/absence, assignments, grades, and bulletin-related academic work.
+- Parent consults linked child information only.
+- Direct student login remains blocked.
+- Do not assign student attendance management to admin/principal/manager in documentation or UML wording.
+- Do not assign operational duties to the manager.
 
 ## Delivery Recommendation
 
-Use `real-email-password-reset-v2.96` as the final technical delivery checkpoint for the current project scope.
+Use `mobile-bulletin-export-state-fix-v3.09` as the final technical delivery checkpoint for the current project scope.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
