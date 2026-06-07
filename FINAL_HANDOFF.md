@@ -2,11 +2,11 @@
 
 ## Current Technical Delivery Checkpoint
 
-`mobile-parent-messages-arabic-text-v3.12`
+`web-visible-arabic-text-v3.14`
 
 Root commit:
 
-`6e822fd Fix mobile messages Arabic text`
+`5142b18 Update web visible Arabic text`
 
 Backend submodule commit:
 
@@ -22,7 +22,7 @@ Mobile submodule commit:
 
 ## Verification Status
 
-The latest all-stack verification passed after `mobile-parent-messages-arabic-text-v3.12`:
+The latest all-stack verification passed after `web-visible-arabic-text-v3.14`:
 
 - Root, backend, web, and mobile repositories are clean and up to date.
 - Backend `npm run build` passed.
@@ -30,6 +30,8 @@ The latest all-stack verification passed after `mobile-parent-messages-arabic-te
 - Web `npm run build` passed with only the known non-blocking Vite chunk-size warning.
 - Mobile `npm run verify` passed, including lint and Arabic encoding check.
 - Mobile local runtime files remain ignored and are not committed: `.env`, `.expo/`, `expo-env.d.ts`, and `node_modules/`.
+- Web visible Arabic text verification passed: no remaining visible `\u06...` Arabic escape sequences, mojibake markers, or replacement characters were found in the web/mobile TypeScript source scan.
+- Fresh clone/submodule verification for `web-visible-arabic-text-v3.14` passed with backend `63d3dea`, web `2c60182`, and mobile `367b0ed`.
 
 ## Latest Mobile Updates
 
@@ -85,13 +87,12 @@ The current stable project scope includes:
 - Mobile parent portal parity for linked-child follow-up.
 - Mobile bulletin PDF export.
 - Mobile parent messaging with Arabic UI text verified on phone.
+- Web Arabic UI source text stored as visible Arabic text instead of `\u06...` escape sequences.
 
 ## Delivery Recommendation
 
-Use `mobile-parent-messages-arabic-text-v3.12` as the latest technical delivery checkpoint.
+Use `web-visible-arabic-text-v3.14` as the latest stable delivery checkpoint.
 
-The handoff documentation should be tagged separately after this update as:
-
-`final-handoff-mobile-messages-v3.13`
+The latest mobile technical delivery remains `mobile-parent-messages-arabic-text-v3.12`, and the final handoff checkpoint before the web Arabic source-text cleanup remains `final-handoff-mobile-messages-v3.13`.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
