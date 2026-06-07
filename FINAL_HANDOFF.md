@@ -2,15 +2,15 @@
 
 ## Current Technical Delivery Checkpoint
 
-`web-visible-arabic-text-v3.14`
+`password-reset-log-guard-v3.16`
 
 Root commit:
 
-`5142b18 Update web visible Arabic text`
+`c6993bb Update backend password reset log guard`
 
 Backend submodule commit:
 
-`63d3dea`
+`9152a2e Guard password reset link logging in production`
 
 Web submodule commit:
 
@@ -22,7 +22,7 @@ Mobile submodule commit:
 
 ## Verification Status
 
-The latest all-stack verification passed after `web-visible-arabic-text-v3.14`:
+The latest verification status after `password-reset-log-guard-v3.16`:
 
 - Root, backend, web, and mobile repositories are clean and up to date.
 - Backend `npm run build` passed.
@@ -31,7 +31,8 @@ The latest all-stack verification passed after `web-visible-arabic-text-v3.14`:
 - Mobile `npm run verify` passed, including lint and Arabic encoding check.
 - Mobile local runtime files remain ignored and are not committed: `.env`, `.expo/`, `expo-env.d.ts`, and `node_modules/`.
 - Web visible Arabic text verification passed: no remaining visible `\u06...` Arabic escape sequences, mojibake markers, or replacement characters were found in the web/mobile TypeScript source scan.
-- Fresh clone/submodule verification for `web-visible-arabic-text-v3.14` passed with backend `63d3dea`, web `2c60182`, and mobile `367b0ed`.
+- Fresh clone/submodule verification for `password-reset-log-guard-v3.16` passed with backend `9152a2e`, web `2c60182`, and mobile `367b0ed`.
+- Password reset fallback logging is now production-safe: when email delivery fails in production, the full reset link/token is not logged.
 
 ## Latest Mobile Updates
 
@@ -88,11 +89,12 @@ The current stable project scope includes:
 - Mobile bulletin PDF export.
 - Mobile parent messaging with Arabic UI text verified on phone.
 - Web Arabic UI source text stored as visible Arabic text instead of `\u06...` escape sequences.
+- Password reset request fallback logging keeps local demo support while avoiding full reset-link logs in production.
 
 ## Delivery Recommendation
 
-Use `web-visible-arabic-text-v3.14` as the latest stable delivery checkpoint.
+Use `password-reset-log-guard-v3.16` as the latest stable delivery checkpoint.
 
-The latest mobile technical delivery remains `mobile-parent-messages-arabic-text-v3.12`, and the final handoff checkpoint before the web Arabic source-text cleanup remains `final-handoff-mobile-messages-v3.13`.
+The latest web Arabic source-text checkpoint remains `web-visible-arabic-text-v3.14`, the previous final handoff remains `final-handoff-web-arabic-text-v3.15`, and the latest mobile technical delivery remains `mobile-parent-messages-arabic-text-v3.12`.
 
 Future work should be handled as a new phase, not mixed into this stable checkpoint.
